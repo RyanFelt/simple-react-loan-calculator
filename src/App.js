@@ -31,16 +31,17 @@ function App() {
 
     const months = period * 12;
 
-    setMonthlyPayment(Math.round(amount / months));
-
     if (!rate || parseInt(rate) === 0) {
       setTotalCost(amount);
+      setMonthlyPayment(Math.round(amount / months));
     } else {
       const rateDecimal = rate / 1200;
 
       const top = Math.round(rateDecimal * amount * months);
       const bottom = 1 - Math.pow(1 + rateDecimal, -months);
-      setTotalCost(Math.round(top / bottom));
+      const totalLoanCost = Math.round(top / bottom);
+      setTotalCost(totalLoanCost);
+      setMonthlyPayment(Math.round(totalLoanCost / months));
     }
   };
 
@@ -55,7 +56,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="flex-item">
+      <div className="main-container">
         <h3>Loan Calcuator</h3>
         <div className="flex-container">
           <div className="flex-item">
