@@ -19,8 +19,6 @@
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  min-width: 400px;
-  min-height: 25px;
 }
 
 .flex-item {
